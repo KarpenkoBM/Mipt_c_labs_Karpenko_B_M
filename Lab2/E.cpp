@@ -17,14 +17,14 @@ double mean(double psi[], double pdf[], double const dv, unsigned size)
 int main()
 {
     double const f_pi = 3.14159265359f;
-    unsigned size = 100000;
-    double min = -1000;
-    double max = 1000;
-    double dv = (max - min)/size;
-    double v = min;
+    unsigned size = 1000000;
     double T = 0.f;
     std::cout <<"Enter T: ";
     std::cin >> T;
+    double min = -T;
+    double max = T;
+    double dv = (max - min)/size;
+    double v = min;
     double *pdf = nullptr, *psi = nullptr;
     pdf = new double[size];
     psi = new double[size];
