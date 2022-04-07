@@ -30,7 +30,7 @@ int main()
 
     for (long long int i = 0; i < size; i++)
     {
-         psi[i] = fabs(v);
+         psi[i] = v;
          pdf[i] = exp(-v*v/T)/sqrt(T*f_pi);
          v += dv;
 

@@ -1,14 +1,16 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip>
+
 float mean(float psi[], float pdf[], float const dv, unsigned size)
 {
      if(size == 1)
     {
-        return fma(fma(psi[0], pdf[0], 0), dv, 0);
+        return fmaf(fmaf(psi[0], pdf[0], 0), dv, 0);
     }
     else
     {
-         return fma(mean(psi, pdf, dv, size / 2), 1 , mean(psi +size / 2, pdf + size/2, dv, size - size / 2));
+         return fmaf(mean(psi, pdf, dv, size / 2), 1 , mean(psi +size / 2, pdf + size/2, dv, size - size / 2));
     }
 }
 
@@ -34,7 +36,7 @@ int main()
          v += dv;
 
     }
-    std::cout<<mean(psi, pdf, dv, size)<<std:: endl;
+    std::cout<<std::setprecision(10)<<mean(psi, pdf, dv, size)<<std:: endl;
     delete[] psi;
     delete[] pdf;
     return 0;

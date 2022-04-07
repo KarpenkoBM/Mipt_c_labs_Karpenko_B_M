@@ -4,13 +4,16 @@ float mean(float psi[], float pdf[], float const dv, unsigned size)
 {
     float sum = 0.0;
     float mistake = 0.0;
+    float sum_mistake = 0.0;
     for(unsigned i = 0; i < size; i++)
    {
         float y = psi[i]*pdf[i]*dv - mistake;
         float t = sum + y;
         mistake = (t-sum) - y;
+        sum_mistake += mistake;
         sum = t;
    }
+   std::cout<<sum_mistake<<std::endl;
    return sum;
 }
 
@@ -20,7 +23,7 @@ float mean(float psi[], float pdf[], float const dv, unsigned size)
 int main()
 {
     float const f_pi = 3.14159265359f;
-    unsigned size = 1000;
+    unsigned size = 10000;
     float T = 0.f;
     std::cout <<"Enter T: ";
     std::cin >> T;
